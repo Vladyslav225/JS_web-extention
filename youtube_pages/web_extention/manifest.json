@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Log URL Extension",
+    "version": "1.0",
+    "description": "A simple Firefox extension that logs the current page URL to the console.",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Log Current URL"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["script.js"]
+        }
+    ]
+}
