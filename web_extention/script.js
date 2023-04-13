@@ -2,22 +2,29 @@ function displayResult() {
     const youTubeeVideoPageMobileVersion = 'https://m.youtube.com/watch?v=';
     const youTubeVideoPageDesktopVersion = 'https://www.youtube.com/watch?v=';
     const pageGooglePlayApp = 'https://play.google.com/store/apps/details?id=';
+    const pageAppleStoreAppDesktopVersion = 'https://apps.apple.com/us/app/';
 
     if(window.location.href.includes(youTubeeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
-            console.log(channelName)
+            console.log(channelName);
         });
     };
 
     if(window.location.href.includes(youTubeVideoPageDesktopVersion)) {
         getYouTubeChanelDesktopVersion((channelName) => {
-            console.log(channelName)
+            console.log(channelName);
         });
     };
 
     if(window.location.href.includes(pageGooglePlayApp)) {
         getGooglePlayPublisher((publisherId) => {
-            console.log(publisherId)
+            console.log(publisherId);
+        });
+    };
+
+    if(window.location.href.includes(pageAppleStoreAppDesktopVersion)) {
+        getAppleStorePublisher((channelName) => {
+            console.log(channelName);
         });
     };
 };
@@ -61,6 +68,11 @@ function getGooglePlayPublisher(callback) {
             getGooglePlayPublisher(callback);
         }, 1000);
     }
+};
+
+function getAppleStorePublisher(callback){
+    const getPublisherName = document.querySelector('h2.product-header__identity.app-header__identity a').textContent.trim();
+    callback(getPublisherName)
 };
 
 displayResult();
