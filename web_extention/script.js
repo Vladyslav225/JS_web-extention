@@ -1,10 +1,11 @@
 function displayResult() {
-    const youTubeeVideoPageMobileVersion = 'https://m.youtube.com/watch?v=';
+    const youTubeVideoPageMobileVersion = 'https://m.youtube.com/watch?v=';
     const youTubeVideoPageDesktopVersion = 'https://www.youtube.com/watch?v=';
     const pageGooglePlayApp = 'https://play.google.com/store/apps/details?id=';
     const pageAppleStoreAppDesktopVersion = 'https://apps.apple.com/us/app/';
+    const instagramAccountPage = 'https://www.instagram.com/';
 
-    if(window.location.href.includes(youTubeeVideoPageMobileVersion)) {
+    if(window.location.href.includes(youTubeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
             console.log(channelName);
         });
@@ -25,6 +26,12 @@ function displayResult() {
     if(window.location.href.includes(pageAppleStoreAppDesktopVersion)) {
         getAppleStorePublisher((channelName) => {
             console.log(channelName);
+        });
+    };
+
+    if(window.location.href.includes(instagramAccountPage)) {
+        getInstagramAccountName(instagramAccountPage, (accountName) => {
+            console.log(accountName);
         });
     };
 };
@@ -73,6 +80,20 @@ function getGooglePlayPublisher(callback) {
 function getAppleStorePublisher(callback){
     const getPublisherName = document.querySelector('h2.product-header__identity.app-header__identity a').textContent.trim();
     callback(getPublisherName)
+};
+
+function getInstagramAccountName(homePageURL, callback){
+    if(window.location.href != homePageURL){
+        const elementAccountName = document.querySelector('h2.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.x1ms8i2q.xo1l8bm.x5n08af.x10wh9bi.x1wdrske.x8viiok.x18hxmgj');
+        if(elementAccountName){
+            var getAccountName = elementAccountName.textContent;
+            callback(getAccountName);
+        }else {
+            setTimeout(() => {
+                getInstagramAccountName(homePageURL, callback);
+            }, 1000);
+        };
+    }
 };
 
 displayResult();
