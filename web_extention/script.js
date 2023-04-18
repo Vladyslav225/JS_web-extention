@@ -4,6 +4,7 @@ function displayResult() {
     const pageGooglePlayApp = 'https://play.google.com/store/apps/details?id=';
     const pageAppleStoreAppDesktopVersion = 'https://apps.apple.com/us/app/';
     const instagramAccount = 'https://www.instagram.com/p/';
+    const homePageTwitter = 'https://twitter.com/';
 
     if(window.location.href.includes(youTubeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
@@ -33,6 +34,10 @@ function displayResult() {
         getInstagramAccountName(instagramAccount, (accountName) => {
             console.log(accountName);
         });
+    };
+
+    if(window.location.href.includes(homePageTwitter)) {
+        displayShadowElement();
     };
 };
 
@@ -93,5 +98,45 @@ function getInstagramAccountName(homePageURL, callback) {
         }, 1000);
     };
 };
+
+function displayShadowElement() {
+    getTrayElement((element) => {
+        console.log(element);
+    });
+
+    var textElement = createShadowElement();
+    console.log(textElement);
+};
+
+function getTrayElement(callback) {
+    const getParentBlockPost = document.getElementsByClassName('css-1dbjc4n r-1iusvr4 r-16y2uox r-1777fci r-kzbkwu');
+    let lengthBlockPost = getParentBlockPost.length;
+
+    setInterval(() => {
+        if (getParentBlockPost.length !== lengthBlockPost) {
+            lengthBlockPost = getParentBlockPost.length;
+
+            for(let i of getParentBlockPost) {
+                const getTrayBlock = i.querySelectorAll('div.css-1dbjc4n.r-1ta3fxp.r-18u37iz.r-1wtj0ep.r-1s2bzr4.r-1mdbhws');
+                callback(getTrayBlock);
+            };
+        };
+    }, 100);
+};
+
+function createShadowElement() {
+    const crateParentElement = document.createElement('div');
+    crateParentElement.setAttribute('class', 'parent-element');
+
+    const createChildElement = document.createElement('div');
+    createChildElement.setAttribute('class', 'child-element');
+
+    const addText = document.createTextNode('Shadow element');
+    createChildElement.appendChild(addText);
+
+    crateParentElement.appendChild(createChildElement);
+
+    return crateParentElement;
+}
 
 displayResult();
