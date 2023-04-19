@@ -103,9 +103,6 @@ function displayShadowElement() {
     getTrayElement((element) => {
         console.log(element);
     });
-
-    var textElement = createShadowElement();
-    console.log(textElement);
 };
 
 function getTrayElement(callback) {
@@ -123,20 +120,5 @@ function getTrayElement(callback) {
         };
     }, 100);
 };
-
-function createShadowElement() {
-    const crateParentElement = document.createElement('div');
-    crateParentElement.setAttribute('class', 'parent-element');
-
-    const createChildElement = document.createElement('div');
-    createChildElement.setAttribute('class', 'child-element');
-
-    const addText = document.createTextNode('Shadow element');
-    createChildElement.appendChild(addText);
-
-    crateParentElement.appendChild(createChildElement);
-
-    return crateParentElement;
-}
 
 displayResult();
