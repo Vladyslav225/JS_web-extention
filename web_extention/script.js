@@ -8,8 +8,10 @@ function displayResult() {
 
     const instagramAccount = 'https://www.instagram.com/p/';
 
-    const linkedIdCompanyProfilePage = 'https://www.linkedin.com/company/';
-    const linkedIdDeveloperProfilePage = 'https://www.linkedin.com/in/';
+    const companyProfilePageLinkedInDesktopVersion = 'https://www.linkedin.com/company/';
+    const companyProfilePageLinkedInMobileVersion = 'https://www.linkedin.com/mwlite/company/';
+
+    const developerProfilePageLinkedIn = 'https://www.linkedin.com/in/';
 
     if(window.location.href.includes(youTubeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
@@ -41,14 +43,21 @@ function displayResult() {
         });
     };
 
-    if(window.location.href.includes(linkedIdCompanyProfilePage)) {
-        const companyName = getCompanyNameProfileLinkedIn();
-        const urlCompanyAvatar = getURLCompanyAvatarProfileLinkedIn();
+    if(window.location.href.includes(companyProfilePageLinkedInDesktopVersion)) {
+        const companyName = getCompanyNameProfileLinkedInDesctopVersion();
+        const urlCompanyAvatar = getURLCompanyAvatarProfileLinkedInDesctopVersion();
         console.log(companyName);
         console.log(urlCompanyAvatar);
     };
 
-    if(window.location.href.includes(linkedIdDeveloperProfilePage)) {
+    if(window.location.href.includes(companyProfilePageLinkedInMobileVersion)) {
+        const companyName = getCompanyNameProfileLinkedInMobileVersion();
+        const urlCompanyAvatar = getURLCompanyAvatarProfileLinkedInMobileVersion();
+        console.log(companyName);
+        console.log(urlCompanyAvatar);
+    };
+
+    if(window.location.href.includes(developerProfilePageLinkedIn)) {
         const developerName = getDeveloperNameProfileLinkedIn();
         const urlDeveloperAvatar = getDeveloperAvatarProfileLinkedIn();
         console.log(developerName);
@@ -115,24 +124,47 @@ function getInstagramAccountName(homePageURL, callback) {
     };
 };
 
-function getCompanyNameProfileLinkedIn() {
+function getCompanyNameProfileLinkedInDesctopVersion() {
     const getCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
     return getCompanyName;
 };
 
-function getURLCompanyAvatarProfileLinkedIn() {
+function getURLCompanyAvatarProfileLinkedInDesctopVersion() {
     const getURLAvatarCompany = document.querySelector('div.org-top-card-primary-content__logo-container img').getAttribute('src');
     return getURLAvatarCompany
 };
 
+function getCompanyNameProfileLinkedInMobileVersion() {
+    const getCompanyName = document.querySelector('span#company-name').textContent;
+    return getCompanyName;
+};
+function getURLCompanyAvatarProfileLinkedInMobileVersion() {
+    const getCompanyAvatar = document.querySelector('img.company-entity-large').getAttribute('data-delayed-url');
+    return getCompanyAvatar;
+};
+
 function getDeveloperNameProfileLinkedIn() {
-    const getUserName = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words').textContent;
-    return getUserName;
+    const getDeveloperNameDesktopVersion = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words');
+    const getDeveloperNameMobileVersion = document.querySelector('h1.text-color-text.heading-large');
+
+    if(getDeveloperNameDesktopVersion) {
+        return getDeveloperNameDesktopVersion.textContent;
+    };
+    if(getDeveloperNameMobileVersion) {
+        return getDeveloperNameMobileVersion.textContent;
+    };
 };
 
 function getDeveloperAvatarProfileLinkedIn() {
-    const element = document.querySelector('img.pv-top-card-profile-picture__image.pv-top-card-profile-picture__image--show.ember-view').getAttribute('src');
-    return element;
+    const getDeveloperAvatarDesktopVersion = document.querySelector('img.pv-top-card-profile-picture__image.pv-top-card-profile-picture__image--show.ember-view');
+    const getDeveloperAvatarMobileVersion = document.querySelector('figure#profile-picture-container img');
+
+    if(getDeveloperAvatarDesktopVersion) {
+        return getDeveloperAvatarDesktopVersion.getAttribute('src');
+    };
+    if(getDeveloperAvatarMobileVersion) {
+        return getDeveloperAvatarMobileVersion.getAttribute('data-delayed-url');
+    };
 }
 
 displayResult();
