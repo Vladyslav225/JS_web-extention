@@ -1,9 +1,15 @@
 function displayResult() {
     const youTubeVideoPageMobileVersion = 'https://m.youtube.com/watch?v=';
     const youTubeVideoPageDesktopVersion = 'https://www.youtube.com/watch?v=';
+
     const pageGooglePlayApp = 'https://play.google.com/store/apps/details?id=';
+
     const pageAppleStoreAppDesktopVersion = 'https://apps.apple.com/us/app/';
+
     const instagramAccount = 'https://www.instagram.com/p/';
+
+    const linkedIdCompanyProfilePage = 'https://www.linkedin.com/company/';
+    const linkedIdDeveloperProfilePage = 'https://www.linkedin.com/in/';
 
     if(window.location.href.includes(youTubeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
@@ -34,7 +40,18 @@ function displayResult() {
             console.log(accountName);
         });
     };
+
+    if(window.location.href.includes(linkedIdCompanyProfilePage)) {
+        const companyName = getLinkedIdCompanyProfilePage();
+        console.log(companyName)
+    };
+
+    if(window.location.href.includes(linkedIdDeveloperProfilePage)) {
+        const developerName = getLinkedIdDeveloperProfilePage();
+        console.log(developerName);
+    };
 };
+
 
 function getYouTubeChanelMobileVersion(callback) {
     const getParentElement = document.getElementsByClassName('slim-owner-icon-and-title')
@@ -92,6 +109,16 @@ function getInstagramAccountName(homePageURL, callback) {
             getInstagramAccountName(homePageURL, callback);
         }, 1000);
     };
+};
+
+function getLinkedIdCompanyProfilePage() {
+    const getCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
+    return getCompanyName;
+};
+
+function getLinkedIdDeveloperProfilePage() {
+    const getUserName = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words').textContent;
+    return getUserName;
 };
 
 displayResult();
