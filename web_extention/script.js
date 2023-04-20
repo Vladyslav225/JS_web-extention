@@ -112,13 +112,13 @@ function getInstagramAccountName(homePageURL, callback) {
 };
 
 function getLinkedIdCompanyProfilePage() {
-    const getParentElementCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
-    return getParentElementCompanyName;
+    const getCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
+    return getCompanyName;
 };
 
 function getLinkedIdDeveloperProfilePage() {
-    const getElementUserName = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words').textContent;
-    return getElementUserName;
+    const getUserName = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words').textContent;
+    return getUserName;
 };
 
 displayResult();
