@@ -42,13 +42,17 @@ function displayResult() {
     };
 
     if(window.location.href.includes(linkedIdCompanyProfilePage)) {
-        const companyName = getLinkedIdCompanyProfilePage();
-        console.log(companyName)
+        const companyName = getCompanyNameProfileLinkedIn();
+        const urlCompanyAvatar = getURLCompanyAvatarProfileLinkedIn();
+        console.log(companyName);
+        console.log(urlCompanyAvatar);
     };
 
     if(window.location.href.includes(linkedIdDeveloperProfilePage)) {
-        const developerName = getLinkedIdDeveloperProfilePage();
+        const developerName = getDeveloperNameProfileLinkedIn();
+        const urlDeveloperAvatar = getDeveloperAvatarProfileLinkedIn();
         console.log(developerName);
+        console.log(urlDeveloperAvatar);
     };
 };
 
@@ -111,14 +115,24 @@ function getInstagramAccountName(homePageURL, callback) {
     };
 };
 
-function getLinkedIdCompanyProfilePage() {
+function getCompanyNameProfileLinkedIn() {
     const getCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
     return getCompanyName;
 };
 
-function getLinkedIdDeveloperProfilePage() {
+function getURLCompanyAvatarProfileLinkedIn() {
+    const getURLAvatarCompany = document.querySelector('div.org-top-card-primary-content__logo-container img').getAttribute('src');
+    return getURLAvatarCompany
+};
+
+function getDeveloperNameProfileLinkedIn() {
     const getUserName = document.querySelector('h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words').textContent;
     return getUserName;
 };
+
+function getDeveloperAvatarProfileLinkedIn() {
+    const element = document.querySelector('img.pv-top-card-profile-picture__image.pv-top-card-profile-picture__image--show.ember-view').getAttribute('src');
+    return element;
+}
 
 displayResult();
