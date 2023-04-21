@@ -13,6 +13,8 @@ function displayResult() {
 
     const developerProfilePageLinkedIn = 'https://www.linkedin.com/in/';
 
+    const twitterURL = 'https://twitter.com/';
+
     if(window.location.href.includes(youTubeVideoPageMobileVersion)) {
         getYouTubeChanelMobileVersion((channelName) => {
             console.log(channelName);
@@ -62,6 +64,20 @@ function displayResult() {
         const urlDeveloperAvatar = getDeveloperAvatarProfileLinkedIn();
         console.log(developerName);
         console.log(urlDeveloperAvatar);
+    };
+
+    if(window.location.href.includes(twitterURL)) {
+        getUserNameTwitterProfileDesktopVersion((userName) => {
+            console.log(userName);
+        });
+
+        getUserNameTwitterProfileMobileVersion((userName) => {
+            console.log(userName);
+        });
+
+        getUserAvatarTwitterProfile((urlAvatar) => {
+            console.log(urlAvatar);
+        });
     };
 };
 
@@ -165,6 +181,43 @@ function getDeveloperAvatarProfileLinkedIn() {
     if(getDeveloperAvatarMobileVersion) {
         return getDeveloperAvatarMobileVersion.getAttribute('data-delayed-url');
     };
-}
+};
+
+function getUserNameTwitterProfileDesktopVersion(callback) {
+    const getParentElementName = document.querySelector('div.css-1dbjc4n.r-6gpygo.r-14gqq1x');
+    if(getParentElementName) {
+        const getUserName = getParentElementName.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
+        callback(getUserName);
+    }else {
+        setTimeout(() => {
+            getUserNameTwitterProfileDesktopVersion(callback);
+        }, 1000);
+    };
+};
+
+function getUserNameTwitterProfileMobileVersion(callback) {
+    const getParentElementName = document.querySelector('div.css-1dbjc4n.r-1a8r3js.r-14gqq1x');
+    if(getParentElementName) {
+        const getUserName = getParentElementName.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
+        callback(getUserName);
+    }else {
+        setTimeout(() => {
+            getUserNameTwitterProfileMobileVersion(callback);
+        }, 1000);
+    };
+};
+
+function getUserAvatarTwitterProfile(callback) {
+    const getParentElementAvatar = document.querySelector('div.css-1dbjc4n.r-1habvwh.r-18u37iz.r-1w6e6rj.r-1wtj0ep')
+
+    if(getParentElementAvatar) {
+        const getURLAvatar = getParentElementAvatar.querySelector('img.css-9pa8cd').src;
+        callback(getURLAvatar);
+    }else {
+        setTimeout(() => {
+            getUserAvatarTwitterProfile(callback);
+        }, 1000);
+    };
+};
 
 displayResult();
