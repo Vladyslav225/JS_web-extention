@@ -81,33 +81,6 @@ function displayResult() {
     };
 };
 
-
-function getYouTubeChanelMobileVersion(callback) {
-    const getParentElement = document.getElementsByClassName('slim-owner-icon-and-title')
-    if(getParentElement) {
-        for(i of getParentElement) {
-            const getChannelName = i.getAttribute('href').replace('/', '')
-            callback(getChannelName);
-        };
-    }else {
-        setTimeout(() => {
-            getYouTubeChanelMobileVersion(callback);
-        }, 1000);
-    }
-};
-
-function getYouTubeChanelDesktopVersion(callback) {
-    const getParentLinkElement = document.querySelector('yt-formatted-string.style-scope.ytd-channel-name.complex-string');
-    if(getParentLinkElement) {
-        const getChannelName = getParentLinkElement.querySelector('a.yt-simple-endpoint.style-scope.yt-formatted-string').getAttribute('href').replace('/', '');
-        callback(getChannelName);
-    }else {
-        setTimeout(() => {
-            getYouTubeChanelDesktopVersion(callback);
-        }, 1000);
-    }
-};
-
 function getGooglePlayPublisher(callback) {
     const getParentPublisherElement = document.querySelector('div.dzkqwc c-wiz')
     if(getParentPublisherElement) {
@@ -123,11 +96,6 @@ function getGooglePlayPublisher(callback) {
     }
 };
 
-function getAppleStorePublisher(callback){
-    const getPublisherName = document.querySelector('h2.product-header__identity.app-header__identity a').textContent.trim();
-    callback(getPublisherName)
-};
-
 function getInstagramAccountName(homePageURL, callback) {
     const elementAccountName = document.querySelector('a.x1i10hfl.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.xdl72j9.x2lah0s.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x2lwn1j.xeuugli.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x1lku1pv.x1a2a7pz.x6s0dn4.xjyslct.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.x1ypdohk.x1i0vuye.xwhw2v2.xl56j7k.x17ydfre.x1f6kntn.x2b8uid.xlyipyv.x87ps6o.x14atkfc.x1d5wrs8.x972fbf.xcfux6l.x1qhh985.xm0m39n.xm3z3ea.x1x8b98j.x131883w.x16mih1h.xt7dq6l.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.xjbqb8w.x1n5bzlp.xqnirrm.xj34u2y.x568u83.x3nfvp2');
     if(elementAccountName){
@@ -140,23 +108,9 @@ function getInstagramAccountName(homePageURL, callback) {
     };
 };
 
-function getCompanyNameProfileLinkedInDesctopVersion() {
-    const getCompanyName = document.querySelector('h1.ember-view.text-display-medium-bold.org-top-card-summary__title.full-width span').textContent;
-    return getCompanyName;
-};
-
-function getURLCompanyAvatarProfileLinkedInDesctopVersion() {
-    const getURLAvatarCompany = document.querySelector('div.org-top-card-primary-content__logo-container img').getAttribute('src');
-    return getURLAvatarCompany
-};
-
-function getCompanyNameProfileLinkedInMobileVersion() {
-    const getCompanyName = document.querySelector('span#company-name').textContent;
-    return getCompanyName;
-};
-function getURLCompanyAvatarProfileLinkedInMobileVersion() {
-    const getCompanyAvatar = document.querySelector('img.company-entity-large').getAttribute('data-delayed-url');
-    return getCompanyAvatar;
+function getAppleStorePublisher(callback){
+    const getPublisherName = document.querySelector('h2.product-header__identity.app-header__identity a').textContent.trim();
+    callback(getPublisherName)
 };
 
 function getDeveloperNameProfileLinkedIn() {
@@ -180,30 +134,6 @@ function getDeveloperAvatarProfileLinkedIn() {
     };
     if(getDeveloperAvatarMobileVersion) {
         return getDeveloperAvatarMobileVersion.getAttribute('data-delayed-url');
-    };
-};
-
-function getUserNameTwitterProfileDesktopVersion(callback) {
-    const getParentElementName = document.querySelector('div.css-1dbjc4n.r-6gpygo.r-14gqq1x');
-    if(getParentElementName) {
-        const getUserName = getParentElementName.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
-        callback(getUserName);
-    }else {
-        setTimeout(() => {
-            getUserNameTwitterProfileDesktopVersion(callback);
-        }, 1000);
-    };
-};
-
-function getUserNameTwitterProfileMobileVersion(callback) {
-    const getParentElementName = document.querySelector('div.css-1dbjc4n.r-1a8r3js.r-14gqq1x');
-    if(getParentElementName) {
-        const getUserName = getParentElementName.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
-        callback(getUserName);
-    }else {
-        setTimeout(() => {
-            getUserNameTwitterProfileMobileVersion(callback);
-        }, 1000);
     };
 };
 
