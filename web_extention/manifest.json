@@ -11,9 +11,9 @@
         {
             "matches": ["<all_urls>"],
             "js": [
-                "mobile_version.js",
-                "desktop_version.js",
-                "script.js"
+                "analysisURLs.js",
+                "urlsForAnalysis.js",
+                "displayResult.js"
             ]
         }
     ]
