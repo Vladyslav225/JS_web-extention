@@ -9,7 +9,7 @@ window.mobileVersionURLs = {
     companyProfileLinkedIn: 'https://www.linkedin.com/mwlite/company/'
 };
 
-window.generalURLs = {
+window.urlsForAllVersionsSite = {
     googlePlayAppPage: 'https://play.google.com/store/apps/details?id=',
     instagramAccountPage: 'https://www.instagram.com/p/',
     developerProfileLinkedIn: 'https://www.linkedin.com/in/',

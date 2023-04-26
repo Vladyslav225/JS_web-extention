@@ -28,7 +28,7 @@ function getLinkedInCompanyNameProfile() {
     };
 };
 
-function getLinkedInCompanyProfileAvatarURL() {
+function getLinkedInCompanyAvatarProfileURL() {
     const elementURLDesktopVersion = document.querySelector('div.org-top-card-primary-content__logo-container img');
     const elementURLMobileVersion = document.querySelector('img.company-entity-large');
 
@@ -69,6 +69,7 @@ function getInstagramAccountName(callback) {
     const elementAccountName = document.querySelector('a.x1i10hfl.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.xdl72j9.x2lah0s.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x2lwn1j.xeuugli.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x1lku1pv.x1a2a7pz.x6s0dn4.xjyslct.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.x1ypdohk.x1i0vuye.xwhw2v2.xl56j7k.x17ydfre.x1f6kntn.x2b8uid.xlyipyv.x87ps6o.x14atkfc.x1d5wrs8.x972fbf.xcfux6l.x1qhh985.xm0m39n.xm3z3ea.x1x8b98j.x131883w.x16mih1h.xt7dq6l.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.xjbqb8w.x1n5bzlp.xqnirrm.xj34u2y.x568u83.x3nfvp2');
     if(elementAccountName){
         var getAccountName = elementAccountName.textContent;
+
         callback(getAccountName);
     }else {
         setTimeout(() => {
@@ -84,9 +85,11 @@ function getTwitterProfileUserName(callback) {
 
     if(parentElementNameDesktopVersion) {
         const getUserName = parentElementNameDesktopVersion.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
+
         callback(getUserName);
     }else if(parentElementNameMobileVersion){
         const getUserName = parentElementNameMobileVersion.querySelector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0').textContent;
+
         callback(getUserName);
     }else {
         setTimeout(() => {
@@ -95,15 +98,36 @@ function getTwitterProfileUserName(callback) {
     };
 };
 
-function getUserAvatarTwitterProfile(callback) {
-    const getParentElementAvatar = document.querySelector('div.css-1dbjc4n.r-1habvwh.r-18u37iz.r-1w6e6rj.r-1wtj0ep')
+function getTwitterProfileUserAvatarURL(callback) {
+    const getParentElementAvatar = document.querySelector('div.css-1dbjc4n.r-1habvwh.r-18u37iz.r-1w6e6rj.r-1wtj0ep');
 
     if(getParentElementAvatar) {
         const getURLAvatar = getParentElementAvatar.querySelector('img.css-9pa8cd').src;
+
         callback(getURLAvatar);
     }else {
         setTimeout(() => {
-            getUserAvatarTwitterProfile(callback);
+            getTwitterProfileUserAvatarURL(callback);
         }, 1000);
     };
+};
+
+function getGooglePlayPublisherId(callback) {
+    const getParentElementPublisherId = document.querySelector('div.dzkqwc c-wiz');
+
+    if(getParentElementPublisherId) {
+        const getLinkWithPublisherId = getParentElementPublisherId.querySelector('a').getAttribute('href');
+
+        callback(getLinkWithPublisherId);
+    }else {
+        setTimeout(() => {
+            getGooglePlayPublisherId(callback);
+        }, 1000);
+    };
+};
+
+function getAppleStorePublisherLink(){
+    const getLinkWithPublisherId = document.querySelector('h2.product-header__identity.app-header__identity a').getAttribute('href');
+
+    return getLinkWithPublisherId
 };
