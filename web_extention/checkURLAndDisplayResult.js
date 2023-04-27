@@ -42,7 +42,6 @@ function checkURLAndDisplayResult() {
     };
 
     if(window.location.href.includes(Urls.desktopVersionURLs.appleStoreAppPage)) {
-        console.log('123')
         const publisherLink = getAppleStorePublisherLink();
         console.log(publisherLink);
     };
