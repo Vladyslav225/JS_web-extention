@@ -11,7 +11,9 @@
         {
             "matches": ["<all_urls>"],
             "js": [
-                "analysisURLs.js",
+                "displayName.js",
+                "avatarURL.js",
+                "publisherURL.js",
                 "urlsForAnalysis.js",
                 "checkURLAndDisplayResult.js"
             ]
